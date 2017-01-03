@@ -30,7 +30,7 @@ namespace GoogleTrendsScraper.Console.Console
             using (var webdriver = new ChromeDriver())
             {
                 var stories = new TrendsPage(webdriver).GetStories(storiesCount);
-                DumpListToFile(stories, outputDir);
+                DumpListToFile(stories, outputDir, outputFilename);
             }
         }
 
@@ -42,14 +42,15 @@ namespace GoogleTrendsScraper.Console.Console
             if (!Directory.Exists(outputDir))
                 Directory.CreateDirectory(outputDir);
 
-            filename = !string.IsNullOrEmpty(filename) 
+            filename = Path.Combine(outputDir,
+                string.IsNullOrEmpty(filename)
                 ? DateTimeOffset.Now.ToUnixTimeSeconds().ToString() + ".txt"
-                : filename;
+                : filename);
 
             if (File.Exists(filename))
                 File.Move(filename, Path.GetFileNameWithoutExtension(filename) + ".old");
 
-            File.WriteAllLines(Path.Combine(outputDir, filename), list.ToArray<string>());
+            File.WriteAllLines(filename, list.ToArray<string>());
         }
     }
 }
