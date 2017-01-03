@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("GoogleTrendsScraper.Console")]
+[assembly: AssemblyTitle("GoogleTrendsScraper.Lib")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Peter Yu")]
-[assembly: AssemblyProduct("GoogleTrendsScraper")]
+[assembly: AssemblyProduct("GoogleTrendsScraper.Lib")]
 [assembly: AssemblyCopyright("Peter Yu")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("689aafd2-da2f-442a-9be8-abbadf3d4dc2")]
+[assembly: Guid("d1ff2afe-05e0-4f95-aa2d-de57adc22e92")]
 
 // Version information for an assembly consists of the following four values:
 //
