@@ -25,26 +25,29 @@ namespace GoogleTrendsScraper.Console.Console
 
             var outputDir = cmdArgs.OutputDir ?? Convert.ToString(ConfigurationManager.AppSettings["outputDir"]);
 
+            var outputFilename = cmdArgs.OutputFilename ?? Convert.ToString(ConfigurationManager.AppSettings["outputFilename"]);
+
             using (var webdriver = new ChromeDriver())
             {
                 var stories = new TrendsPage(webdriver).GetStories(storiesCount);
-                DumpStoriesToFile(stories, outputDir);
+                DumpListToFile(stories, outputDir);
             }
         }
 
         /// <summary>
         /// Dump a list into a file based on the specified location
         /// </summary>
-        static void DumpStoriesToFile(IEnumerable<string> stories, string outputDir)
+        static void DumpListToFile(IEnumerable<string> list, string outputDir, string filename = null)
         {
             if (!Directory.Exists(outputDir))
                 Directory.CreateDirectory(outputDir);
 
-            string file = DateTimeOffset.Now.ToUnixTimeSeconds().ToString() + ".txt";
-            if (File.Exists(file))
-                File.Move(file, Path.GetFileNameWithoutExtension(file) + ".old");
+            filename = filename ?? DateTimeOffset.Now.ToUnixTimeSeconds().ToString() + ".txt";
 
-            File.WriteAllLines(Path.Combine(outputDir, file), stories.ToArray<string>());
+            if (File.Exists(filename))
+                File.Move(filename, Path.GetFileNameWithoutExtension(filename) + ".old");
+
+            File.WriteAllLines(Path.Combine(outputDir, filename), list.ToArray<string>());
         }
     }
 }
