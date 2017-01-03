@@ -37,12 +37,14 @@ namespace GoogleTrendsScraper.Console.Console
         /// <summary>
         /// Dump a list into a file based on the specified location
         /// </summary>
-        static void DumpListToFile(IEnumerable<string> list, string outputDir, string filename = null)
+        static void DumpListToFile(IEnumerable<string> list, string outputDir, string filename = "")
         {
             if (!Directory.Exists(outputDir))
                 Directory.CreateDirectory(outputDir);
 
-            filename = filename ?? DateTimeOffset.Now.ToUnixTimeSeconds().ToString() + ".txt";
+            filename = !string.IsNullOrEmpty(filename) 
+                ? DateTimeOffset.Now.ToUnixTimeSeconds().ToString() + ".txt"
+                : filename;
 
             if (File.Exists(filename))
                 File.Move(filename, Path.GetFileNameWithoutExtension(filename) + ".old");
