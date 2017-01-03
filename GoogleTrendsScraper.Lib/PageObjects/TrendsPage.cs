@@ -1,19 +1,21 @@
 ﻿using OpenQA.Selenium;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 
 namespace GoogleTrendsScraper.Lib.PageObjects
 {
     public class TrendsPage : BasePage
     {
+        #region Constructor
         public TrendsPage(IWebDriver webdriver)
-            : base(webdriver,
-                  "https://www.google.com/trends")
+           : base(webdriver,
+                 "https://www.google.com/trends")
         {
             WaitUntilPageIsDisplayed();
-        }
+        } 
+        #endregion
 
+        #region Public Methods
         /// <summary>
         /// Gets at least the amount of stories indicated
         /// </summary>
@@ -29,8 +31,10 @@ namespace GoogleTrendsScraper.Lib.PageObjects
             }
 
             return stories;
-        }
+        } 
+        #endregion
 
+        #region Private Methods
         /// <summary>
         /// Collect stories that is currently loaded on page
         /// </summary>
@@ -79,6 +83,7 @@ namespace GoogleTrendsScraper.Lib.PageObjects
         {
             while (!IsPageLoaded())
                 WaitOneSec();
-        }
+        } 
+        #endregion
     }
 }

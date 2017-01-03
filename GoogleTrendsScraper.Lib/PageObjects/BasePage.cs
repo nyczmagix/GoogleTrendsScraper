@@ -5,12 +5,13 @@ using System.Threading;
 
 namespace GoogleTrendsScraper.Lib.PageObjects
 {
-    abstract public class BasePage
+    public abstract class BasePage
     {
-        protected IWebDriver Webdriver { get; set; }
-        protected Actions Actions { get; set; }
+        protected IWebDriver Webdriver { get; private set; }
+        protected Actions Actions { get; private set; }
         protected string BaseUrl { get; set;}
 
+        #region Constructors
         public BasePage(IWebDriver webdriver)
         {
             Webdriver = webdriver;
@@ -18,11 +19,13 @@ namespace GoogleTrendsScraper.Lib.PageObjects
         }
 
         public BasePage(IWebDriver webdriver, string baseUrl)
-            : this(webdriver)   
+            : this(webdriver)
         {
             webdriver.Navigate().GoToUrl(baseUrl);
         }
+        #endregion
 
+        #region Public Methods
         public IWebElement GetElement(string xpath)
             => Webdriver.FindElement(By.XPath(xpath));
 
@@ -33,6 +36,7 @@ namespace GoogleTrendsScraper.Lib.PageObjects
             => Webdriver.Close();
 
         public void WaitOneSec()
-            => Thread.Sleep(1000);     
+            => Thread.Sleep(1000);      
+        #endregion
     }
 }

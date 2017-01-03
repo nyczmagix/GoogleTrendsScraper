@@ -25,11 +25,16 @@ namespace GoogleTrendsScraper.Console.Console
 
             var outputDir = cmdArgs.OutputDir ?? Convert.ToString(ConfigurationManager.AppSettings["outputDir"]);
 
-            var webdriver = new ChromeDriver();
-            var stories = new TrendsPage(webdriver).GetStories(storiesCount);
-            DumpStoriesToFile(stories, outputDir);
+            using (var webdriver = new ChromeDriver())
+            {
+                var stories = new TrendsPage(webdriver).GetStories(storiesCount);
+                DumpStoriesToFile(stories, outputDir);
+            }
         }
 
+        /// <summary>
+        /// Dump a list into a file based on the specified location
+        /// </summary>
         static void DumpStoriesToFile(IEnumerable<string> stories, string outputDir)
         {
             if (!Directory.Exists(outputDir))

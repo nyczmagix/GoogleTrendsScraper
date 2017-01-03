@@ -63,10 +63,6 @@
       <Project>{D1FF2AFE-05E0-4F95-AA2D-DE57ADC22E92}</Project>
       <Name>GoogleTrendsScraper.Lib</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GoogleTrendsScraper\GoogleTrendsScraper.Console.csproj">
-      <Project>{689AAFD2-DA2F-442A-9BE8-ABBADF3D4DC2}</Project>
-      <Name>GoogleTrendsScraper.Console</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />

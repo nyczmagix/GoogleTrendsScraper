@@ -27,6 +27,7 @@ namespace GoogleTrendsScraper.Lib.PageObjects.Tests
             => _trendPage.Close();
 
         [Test]
+        [Description("Load Google Trends and load up to 50 stories")]
         public void GetAtLeast50Stories()
         {
             const int desiredStoriesCount = 50;

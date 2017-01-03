@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleTrendsScraper.Console", "GoogleTrendsScraper\GoogleTrendsScraper.Console.csproj", "{689AAFD2-DA2F-442A-9BE8-ABBADF3D4DC2}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleTrendsScraper.Lib.Tests", "GoogleTrendsScraperTests\GoogleTrendsScraper.Lib.Tests.csproj", "{D6FB6E9D-B2D0-4574-8D3D-151246BCAD99}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleTrendsScraper.Lib", "GoogleTrendsScraper.Lib\GoogleTrendsScraper.Lib.csproj", "{D1FF2AFE-05E0-4F95-AA2D-DE57ADC22E92}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleTrendsScraper.Console", "GoogleTrendsScraper.Console\GoogleTrendsScraper.Console.csproj", "{689AAFD2-DA2F-442A-9BE8-ABBADF3D4DC2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{689AAFD2-DA2F-442A-9BE8-ABBADF3D4DC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{689AAFD2-DA2F-442A-9BE8-ABBADF3D4DC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{689AAFD2-DA2F-442A-9BE8-ABBADF3D4DC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{689AAFD2-DA2F-442A-9BE8-ABBADF3D4DC2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D6FB6E9D-B2D0-4574-8D3D-151246BCAD99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D6FB6E9D-B2D0-4574-8D3D-151246BCAD99}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6FB6E9D-B2D0-4574-8D3D-151246BCAD99}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -27,6 +23,10 @@ Global
 		{D1FF2AFE-05E0-4F95-AA2D-DE57ADC22E92}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D1FF2AFE-05E0-4F95-AA2D-DE57ADC22E92}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D1FF2AFE-05E0-4F95-AA2D-DE57ADC22E92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{689AAFD2-DA2F-442A-9BE8-ABBADF3D4DC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{689AAFD2-DA2F-442A-9BE8-ABBADF3D4DC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{689AAFD2-DA2F-442A-9BE8-ABBADF3D4DC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{689AAFD2-DA2F-442A-9BE8-ABBADF3D4DC2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
