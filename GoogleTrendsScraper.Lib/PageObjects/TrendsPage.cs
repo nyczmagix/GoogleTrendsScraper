@@ -46,8 +46,8 @@ namespace GoogleTrendsScraper.Lib.PageObjects
         /// </summary>
         private IEnumerable<string> FetchStories(int storyNumber)
         {
-            string exp = $"(//a[contains(@class, 'trending-story')]/div[contains(@class, 'title')]/span)[position() > {storyNumber}]";
-            return GetElements(exp)
+            By by = By.XPath($"(//a[contains(@class, 'trending-story')]/div[contains(@class, 'title')]/span)[position() > {storyNumber}]");
+            return GetElements(by)
                 .Select(x => x.Text);
         }
 
@@ -55,7 +55,7 @@ namespace GoogleTrendsScraper.Lib.PageObjects
         /// Indicates if the page is currently loading more stories
         /// </summary>
         private bool IsPageLoadingStories()
-            => GetElement("//md-progress-circular").Displayed;
+            => GetElement(By.XPath("//md-progress-circular")).Displayed;
 
         /// <summary>
         /// Simulate a Page Down, which causes more stories to load
@@ -72,7 +72,7 @@ namespace GoogleTrendsScraper.Lib.PageObjects
         /// </summary>
         private bool IsPageLoaded()
         {
-            var e = GetElement("//div[contains(@class, 'trends-wrapper')]");
+            var e = GetElement(By.XPath("//div[contains(@class, 'trends-wrapper')]"));
             return e != null && e.Displayed;
         }
 

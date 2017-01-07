@@ -26,11 +26,11 @@ namespace GoogleTrendsScraper.Lib.PageObjects
         #endregion
 
         #region Public Methods
-        public IWebElement GetElement(string xpath)
-            => Webdriver.FindElement(By.XPath(xpath));
+        public IWebElement GetElement(By by)
+            => Webdriver.FindElement(by);
 
-        public IList<IWebElement> GetElements(string xpath)
-            => Webdriver.FindElements(By.XPath(xpath));
+        public IList<IWebElement> GetElements(By by)
+            => Webdriver.FindElements(by);
 
         public void Close()
             => Webdriver.Close();
