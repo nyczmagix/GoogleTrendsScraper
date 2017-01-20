@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Palmer, Version=0.1.4724.20297, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Palmer.0.1.4724.20297\lib\portable-win+net40+sl40+wp\Palmer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />

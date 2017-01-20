@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 
 namespace GoogleTrendsScraper.Lib.PageObjects
 {
@@ -24,10 +25,11 @@ namespace GoogleTrendsScraper.Lib.PageObjects
             var stories = FetchStories().ToList();
             while (stories.Count < numOfStories)
             {
+                Thread.Sleep(1000);
                 ScrollPageDownAndLoad();
                 var newStories = FetchStories(stories.Count);
                 if (newStories.Count() > 0)
-                    stories.AddRange(newStories);
+                    stories.AddRange(newStories);                
             }
 
             return stories;
@@ -55,7 +57,7 @@ namespace GoogleTrendsScraper.Lib.PageObjects
         /// Indicates if the page is currently loading more stories
         /// </summary>
         private bool IsPageLoadingStories()
-            => GetElement(By.XPath("//md-progress-circular")).Displayed;
+            => GetElementPropertyBooleanValue(By.XPath("//md-progress-circular"), "Displayed");
 
         /// <summary>
         /// Simulate a Page Down, which causes more stories to load
