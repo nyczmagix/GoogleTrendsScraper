@@ -29,23 +29,31 @@ namespace GoogleTrendsScraper.Lib.PageObjects
 
         #region Public Methods
         public IWebElement GetElement(By by)
-            => Webdriver.FindElement(by);
+        {
+            const int MaxRetry = 3;
+            return Retry.On<StaleElementReferenceException>()
+                    .For(MaxRetry)
+                    .With<IWebElement>(x => Webdriver.FindElement(by)).Value;
+        }
+            
 
         public object GetElementPropertyValue(By by, string property)
         {            
             try
             {
-                Retry.On<StaleElementReferenceException>().For(TimeSpan.FromSeconds(10)).With(x =>
-                {
-                    dynamic e = GetElement(by);
-                    return e.GetType().GetProperty(property).GetValue(e, null);
-                });
+                const int MaxWaitSec = 10;
+                return Retry.On<StaleElementReferenceException>()
+                    .For(TimeSpan.FromSeconds(MaxWaitSec))
+                    .With(x =>
+                    {
+                        dynamic e = GetElement(by);
+                        return e.GetType().GetProperty(property).GetValue(e, null);
+                    }).Value;
             }
             catch
             {
+                return null;
             }
-
-            return null;
         }
 
         public bool GetElementPropertyBooleanValue(By by, string property)
