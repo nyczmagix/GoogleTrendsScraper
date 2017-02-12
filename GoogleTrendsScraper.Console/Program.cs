@@ -16,21 +16,22 @@ namespace GoogleTrendsScraper.Console.Console
             var cmdArgs = new CommandArgs();
             Parser.Default.ParseArgumentsStrict(args, cmdArgs);
 
+            var appSettings = ConfigurationManager.AppSettings;
             var storiesCount =
                 cmdArgs.Stories.HasValue
                 ? cmdArgs.Stories.Value
-                : Convert.ToInt32(ConfigurationManager.AppSettings["storiesCount"]);
+                : Convert.ToInt32(appSettings["storiesCount"]);
 
-            var googleTrendsUrl = cmdArgs.GoogleTrendsUrl ?? Convert.ToString(ConfigurationManager.AppSettings["googleTrendsUrl"]);
+            var googleTrendsUrl = cmdArgs.GoogleTrendsUrl ?? Convert.ToString(appSettings["googleTrendsUrl"]);
 
-            var outputDir = cmdArgs.OutputDir ?? Convert.ToString(ConfigurationManager.AppSettings["outputDir"]);
+            var outputDir = cmdArgs.OutputDir ?? Convert.ToString(appSettings["outputDir"]);
 
-            var outputFilename = cmdArgs.OutputFilename ?? Convert.ToString(ConfigurationManager.AppSettings["outputFilename"]);
+            var filename = cmdArgs.Filename ?? Convert.ToString(appSettings["filename"]);
 
             using (var webdriver = new ChromeDriver())
             {
                 var stories = new TrendsPage(webdriver).GetStories(storiesCount);
-                DumpListToFile(stories, outputDir, outputFilename);
+                DumpListToFile(stories, outputDir, filename);
             }
         }
 
@@ -47,8 +48,9 @@ namespace GoogleTrendsScraper.Console.Console
                 ? DateTimeOffset.Now.ToUnixTimeSeconds().ToString() + ".txt"
                 : filename);
 
+            // delete file if one currently exists
             if (File.Exists(filename))
-                File.Move(filename, Path.GetFileNameWithoutExtension(filename) + ".old");
+                File.Delete(filename);
 
             File.WriteAllLines(filename, list.ToArray<string>());
         }

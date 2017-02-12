@@ -16,8 +16,8 @@ namespace GoogleTrendsScraper.Console
             HelpText = "The output location to write the file.")]
         public string OutputDir { get; set; }
 
-        [Option('f', "outputFilename", Required = false,
+        [Option('f', "filename", Required = false,
             HelpText = "The name of the output file.")]
-        public string OutputFilename { get; set; }
+        public string Filename { get; set; }
     }
 }

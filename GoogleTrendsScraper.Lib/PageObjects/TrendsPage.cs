@@ -1,7 +1,6 @@
 ﻿using OpenQA.Selenium;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 
 namespace GoogleTrendsScraper.Lib.PageObjects
 {
@@ -25,7 +24,7 @@ namespace GoogleTrendsScraper.Lib.PageObjects
             var stories = FetchStories().ToList();
             while (stories.Count < numOfStories)
             {
-                Thread.Sleep(1000);
+                WaitOneSec();
                 ScrollPageDownAndLoad();
                 var newStories = FetchStories(stories.Count);
                 if (newStories.Count() > 0)
